@@ -167,8 +167,7 @@
 }
 
 - (void)resetFrame {
-    CGFloat padding = 10;
-    NSRect defaultFrame = NSMakeRect(padding, padding, self.frame.size.width, self.frame.size.height);
+    NSRect defaultFrame = NSMakeRect(0, 10, self.frame.size.width, self.frame.size.height);
     [self setFrame:defaultFrame display:NO];
 }
 
@@ -228,6 +227,11 @@
 	{
 		[_currentBezelView appendString:charString];
 	}
+
+    _currentBezelView.frame = CGRectMake(self.frame.size.width / 2 - _currentBezelView.frame.size.width / 2,
+                                         0,
+                                         _currentBezelView.frame.size.width,
+                                         _currentBezelView.frame.size.height);
     [self _scheduleLineBreak];
 }
 
