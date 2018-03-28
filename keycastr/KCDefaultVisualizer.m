@@ -414,7 +414,11 @@ static const int kKCBezelBorder = 6;
 		fadeDelay = 2;
 	SEL fadeOutSelector = @selector(beginFadeOut:);
 	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:fadeOutSelector object:nil];
-	[self performSelector:fadeOutSelector withObject:nil afterDelay:fadeDelay];
+
+    // Overriding the value here because it's easier than using the settings slider
+    fadeDelay = 1;
+
+    [self performSelector:fadeOutSelector withObject:nil afterDelay:fadeDelay];
 }
 
 -(void) beginFadeOut:(id)sender
