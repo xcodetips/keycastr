@@ -51,7 +51,14 @@
 
 -(BOOL) isCommand
 {
-	return (_modifiers & (NSAlternateKeyMask | NSControlKeyMask | NSCommandKeyMask)) != 0;
+    // It would be better to updated the callin code to use `isReturn`.
+    // Doing it here makes it centralized though.
+    return (_modifiers & (NSAlternateKeyMask | NSControlKeyMask | NSCommandKeyMask)) != 0 || [self isReturn];
+}
+
+-(BOOL) isReturn
+{
+    return _keyCode == 36;
 }
 
 -(NSString*) convertToString
